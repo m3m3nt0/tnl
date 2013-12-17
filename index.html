@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function displayResult()
+{
+var x=document.getElementById("splitter").value;
+var str=document.getElementById("rowdata").value;
+var fieldz=document.getElementById("fields").value;
+var fieldz2 = parseInt(fieldz);
+if (fieldz2>99)
+  {
+  alert("You suggest that every line has " + fieldz2 + " fields, but the tool supports up to 99.");
+  AbortJavaScript();
+  }
+var n=str.split(x);
+var elements = n.length;
+var rows = (elements / fieldz2)+1;
+fieldz2 = fieldz2 + 1;
+var linefeed = "";
+var i =0;
+
+for(var k=1;k<rows;k++){
+    for (var j=1;j<fieldz2;j++){
+        linefeed = linefeed + n[i] + x;
+        i=i+1;
+}
+document.write(linefeed + "<br>");
+linefeed = "";
+}
+document.write("<br>"+"<br>"+"<br>");
+document.write("<p style=\"font-family:courier;\">If you found the tool helpful, please support the site with a donation. Thank you!</p>");
+document.write("<br>"+"<br>"+"<br>");
+document.write("<p style=\"font-family:courier;\">To go back, press \"F5\" button in your keyboard.</p>");
+
+}
+</script>
+</head>
+<body>
+<h2 style="font-family:courier;">tools, not looks.</h2>
+<h4>The situation</h4>
+<table border="0">
+  <tr>
+  <td><FONT COLOR="#FFFFFF">..........</td>
+  <td><pre>
+  You have a file like this: a,b,c,d,e,f and you would like to turn it into a 
+3-column table like this:
+			a,b,c,
+			d,e,f,
+  The tool below makes it possible. As an example, copy and paste the above
+text (that is, a,b,c,d,e,f) into the text box below.
+  Then enter the delimiter, that is the character which seperates each column:
+in our case it's the comma (,). However it can be any symbol or even a sequence
+of characters. For example if our file was "a sep b sep c sep d sep e sep f sep"
+the delimiter would be "sep" (without quotes).
+  After, enter the number of fields per line: in other words, how many columns
+each line should have, in our case 3. The tool allows up to 99 fields. If the
+fields cannot match a value, they will return the default value "undefined".
+  Finally press the "Go!" button. A new web page will open that will present the
+previously unformated sequential file, into a table form with it's columns
+separated by the delimiter (to return in this screen press "F5" in your keyboard).
+Copy the content into a simple word processor (i.e. notepad or equivalent) save
+it as a text file and import it into your spreadsheet. You 're done! 
+  </pre></td>
+</tr>
+</table>
+<table border="0">
+<tr>
+  <td>Place your text:</td>
+  <td><FONT COLOR="#FFFFFF">..........</td>
+  <td><textarea rows="4" cols="50" id="rowdata"></textarea></td>
+</tr>
+<tr>
+  <td>Enter the delimiter:</td>
+  <td></td>
+  <td><input type="text" id="splitter"></td>
+</tr>
+<tr>
+  <td>Enter the number of fields per line:</td>
+  <td></td>
+  <td><input type="number" id="fields" value="1" min="1" max="99"></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td><button type="button" onclick="displayResult();">Go!</button></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id"
+value="FWPJS5ELXWUY8"><input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif"
+border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1"></form>
+</td>
+</tr>
+</table>
+</body>
+</html>
